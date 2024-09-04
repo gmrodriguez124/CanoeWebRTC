@@ -83,9 +83,13 @@ Offers are created on the server and sent to clients:
     int connectionID = CanoeWebRTC.CreateNewRemoteConnection();
     OfferAnswer offerResult = await CanoeWebRTC.CreateOfferForClient(connectionID);
 
+    //Typically initiated by the client requesting to join through signalling
+
 Once the offer is received on the client, they need to be handled and an answer created and sent back:
 
     OfferAnswer answerResult = await CanoeWebRTC.CreateAnswerForServer(offerResult);
+
+    //Will start the connection to the server
 
 Then when the answer is received on the server, it needs to be handled:
 
