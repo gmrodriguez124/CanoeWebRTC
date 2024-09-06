@@ -9,6 +9,7 @@ using UnityEngine;
 public class SignalManager : MonoBehaviour
 {
     public string SignalAddress = "ws://localhost:9001/Signal";
+    public bool copyCreatedRoomCodeToClipboard = false; //only works in standalone / editor
     private string roomCode = "";
 
     public static Action<string> RoomCreatedCallback;
@@ -304,7 +305,10 @@ public class SignalManager : MonoBehaviour
                 RoomCreatedCallback?.Invoke(roomID);
 
                 Debug.Log($"<color=cyan>[Signal]</color> Room <b><i><color=#DDA0DD>{roomID}</color></i></b> created");
-                GUIUtility.systemCopyBuffer = roomCode;
+                if (copyCreatedRoomCodeToClipboard)
+                {
+                    GUIUtility.systemCopyBuffer = roomCode;
+                }
                 break;
 
             case attemptToJoinRoom:
