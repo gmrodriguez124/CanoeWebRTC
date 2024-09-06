@@ -209,15 +209,24 @@ namespace FishNet.Transporting.CanoeWebRTC.Server
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SendToOne(int connID, byte channelID, byte[] data)
         {
-            if (channelID == (byte)Channel.Reliable)
+            if (!connections.ContainsKey(connID))
             {
-                connections[connID].reliableSends.Enqueue(data);
-                connections[connID].reliablePending.Set();
+                base.t.NetworkManager.LogWarning($"<color=#FFA500>[Server]</color> Attempted to send message to non existant connection [{connID}]");
+                return;
             }
             else
             {
-                connections[connID].unreliableSends.Enqueue(data);
-                connections[connID].unreliablePending.Set();
+
+                if (channelID == (byte)Channel.Reliable)
+                {
+                    connections[connID].reliableSends.Enqueue(data);
+                    connections[connID].reliablePending.Set();
+                }
+                else
+                {
+                    connections[connID].unreliableSends.Enqueue(data);
+                    connections[connID].unreliablePending.Set();
+                }
             }
         }
 
