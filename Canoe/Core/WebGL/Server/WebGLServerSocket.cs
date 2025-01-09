@@ -1,3 +1,4 @@
+#if UNITY_WEBGL && !UNITY_EDITOR
 using AOT;
 using FishNet.Connection;
 using FishNet.Managing;
@@ -395,3 +396,4 @@ namespace FishNet.Transporting.CanoeWebRTC.Server
         }
     }
 }
+#endif

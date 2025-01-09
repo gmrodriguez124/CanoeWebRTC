@@ -1,3 +1,4 @@
+#if UNITY_WEBGL && !UNITY_EDITOR
 using System;
 using System.Runtime.InteropServices;
 
@@ -153,3 +154,4 @@ namespace FishNet.Transporting.CanoeWebRTC
         public static void _HandleOffer(string offer) => HandleOffer(offer);
     }
 }
+#endif
