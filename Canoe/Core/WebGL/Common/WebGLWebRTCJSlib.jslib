@@ -707,9 +707,9 @@ function CreateOffer(connectionID) {
 
                var jsonString = JSON.stringify(data);
                ////console.log('sending back offer with candidates')
-               CreateOfferCallback(connectionID, allocateUTF8(jsonString));
+               CreateOfferCallback(connectionID, stringToNewUTF8(jsonString));
 
-            //unity_offerCallback(allocateUTF8(offerSdp), SimpleWebRTC.iceCandidates.map(candidate => candidate.candidate));
+            //unity_offerCallback(stringToNewUTF8(offerSdp), SimpleWebRTC.iceCandidates.map(candidate => candidate.candidate));
          }, CandidateCollectDuration);
 
       }).catch(function (error) {
@@ -724,7 +724,7 @@ function CreateOffer(connectionID) {
 
             var erroredJsonString = JSON.stringify(erroredData);
 
-            CreateOfferCallback(connectionID, allocateUTF8(erroredJsonString));
+            CreateOfferCallback(connectionID, stringToNewUTF8(erroredJsonString));
 
          });
 }
@@ -823,7 +823,7 @@ function HandleOffer(offerJSON) {
 
             var jsonResponseString = JSON.stringify(responseData);
             
-            RespondToOfferCallback(allocateUTF8(jsonResponseString));
+            RespondToOfferCallback(stringToNewUTF8(jsonResponseString));
 
             
          }, CandidateCollectDuration);
@@ -838,7 +838,7 @@ function HandleOffer(offerJSON) {
 
       var erroredJsonString = JSON.stringify(erroredData);
 
-      RespondToOfferCallback(allocateUTF8(erroredJsonString));
+      RespondToOfferCallback(stringToNewUTF8(erroredJsonString));
       });
 }
 
