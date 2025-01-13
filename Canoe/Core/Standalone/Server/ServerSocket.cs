@@ -43,17 +43,11 @@ namespace FishNet.Transporting.CanoeWebRTC.Server
             base.t = t;
             base.mtu = mtu;
 
-
-            if (base.GetLocalConnectionState() != LocalConnectionState.Stopped)
-            {
-                //we are already starting / started
-                return false;
-            }
+            base.SetConnectionState(LocalConnectionState.Starting, true);
 
             ResetQueues();
 
             _localConnectionStates.Enqueue(LocalConnectionState.Started);
-
 
             return true;
 

@@ -120,10 +120,7 @@ public class UltimateTTT_MainMenu : MonoBehaviour
 
     public void HostGame()
     {
-
         InstanceFinder.ServerManager.StartConnection();
-        InstanceFinder.ClientManager.StartConnection();
-
     }
 
     public void JoinGame(string roomCode)

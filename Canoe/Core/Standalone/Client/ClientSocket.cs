@@ -22,14 +22,15 @@ namespace FishNet.Transporting.CanoeWebRTC.Client
             base.t = t;
             base.mtu = mtu;
 
-            _localConnectionStates.Enqueue(LocalConnectionState.Starting);
+            //_localConnectionStates.Enqueue(LocalConnectionState.Starting);
+            base.SetConnectionState(LocalConnectionState.Starting, false);
 
             connectionWithServer = new Connection(this, null, -1);
 
 
             ResetQueues();
 
-            UpdateLocalConnectionState(LocalConnectionState.Starting);
+            //UpdateLocalConnectionState(LocalConnectionState.Starting);
 
             return true;
 

@@ -82,6 +82,7 @@ namespace FishNet.Transporting.CanoeWebRTC.Client
             base.t = t;
             base.mtu = mtu;
 
+            base.SetConnectionState(LocalConnectionState.Starting, false);
 
             WebGLWebRTC._RegisterICEServers(ICEServer.GetFullString());
 
@@ -99,7 +100,7 @@ namespace FishNet.Transporting.CanoeWebRTC.Client
 
             ResetQueues();
 
-            UpdateLocalConnectionState(LocalConnectionState.Starting);
+            //UpdateLocalConnectionState(LocalConnectionState.Starting);
 
             return true;
 

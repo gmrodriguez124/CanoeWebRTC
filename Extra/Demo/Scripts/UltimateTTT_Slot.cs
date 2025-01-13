@@ -62,7 +62,8 @@ public class UltimateTTT_Slot : NetworkBehaviour
     [ObserversRpc]
     public void Client_UpdateSlotSelection(SlotOption slot)
     {
-        subGame.SlotSelected(slotID, slot);
+        if(slot != UltimateTTT.playerType)
+            subGame.SlotSelected(slotID, slot);
 
         if (slot == SlotOption.X)
         {
